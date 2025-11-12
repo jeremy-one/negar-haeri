@@ -1293,12 +1293,14 @@ const title = "Negar Haeri - Avocate";
 				let currentMainFilter = 'all';
 				let currentTagFilter = 'all';
 				let currentSearchTerm = '';
+				let lastAction = 'type'; // Track last user action: 'search', 'type', or 'tag'
 
 				// Function to filter from navigation dropdown
 				window.filterPress = function(type) {
 					currentMainFilter = type;
 					currentTagFilter = 'all';
 					currentSearchTerm = '';
+					lastAction = 'type';
 
 					// Update UI
 					mainFilterButtons.forEach(btn => {
@@ -1324,6 +1326,7 @@ const title = "Negar Haeri - Avocate";
 				window.filterByTag = function(tag) {
 					currentTagFilter = tag;
 					currentSearchTerm = '';
+					lastAction = 'tag';
 
 					// Update UI
 					tagButtons.forEach(btn => {
@@ -1339,8 +1342,38 @@ const title = "Negar Haeri - Avocate";
 					applyFilters();
 				};
 
-				// Function to apply all filters
+				// Function to apply all filters with smart fallback
 				function applyFilters() {
+					// Store original filters
+					const originalMainFilter = currentMainFilter;
+					const originalTagFilter = currentTagFilter;
+					const originalSearchTerm = currentSearchTerm;
+
+					// Try with all filters first
+					let totalVisibleItems = countVisibleItems(currentMainFilter, currentTagFilter, currentSearchTerm);
+
+					// If no results, apply fallback based on last action
+					let appliedMainFilter = currentMainFilter;
+					let appliedTagFilter = currentTagFilter;
+					let appliedSearchTerm = currentSearchTerm;
+
+					if (totalVisibleItems === 0) {
+						if (lastAction === 'search' && currentSearchTerm !== '') {
+							// Keep only search, remove other filters
+							appliedMainFilter = 'all';
+							appliedTagFilter = 'all';
+						} else if (lastAction === 'tag' && currentTagFilter !== 'all') {
+							// Keep only tag, remove other filters
+							appliedMainFilter = 'all';
+							appliedSearchTerm = '';
+						} else if (lastAction === 'type' && currentMainFilter !== 'all') {
+							// Keep only type, remove other filters
+							appliedTagFilter = 'all';
+							appliedSearchTerm = '';
+						}
+					}
+
+					// Apply the final filters
 					pressGroups.forEach(group => {
 						const groupType = group.dataset.type;
 						const items = group.querySelectorAll('.press-list li, .interview-list li');
@@ -1350,16 +1383,16 @@ const title = "Negar Haeri - Avocate";
 							const itemTags = item.dataset.tags || '';
 							const itemText = item.textContent.toLowerCase();
 
-							// Check main category filter (based on parent group)
-							const matchesMainFilter = currentMainFilter === 'all' || groupType === currentMainFilter;
+							// Check main category filter
+							const matchesMainFilter = appliedMainFilter === 'all' || groupType === appliedMainFilter;
 
-							// Check tag filter (based on individual item tags)
-							const matchesTagFilter = currentTagFilter === 'all' || itemTags.split(' ').includes(currentTagFilter);
+							// Check tag filter
+							const matchesTagFilter = appliedTagFilter === 'all' || itemTags.split(' ').includes(appliedTagFilter);
 
 							// Check search term
-							const matchesSearch = currentSearchTerm === '' || itemText.includes(currentSearchTerm.toLowerCase());
+							const matchesSearch = appliedSearchTerm === '' || itemText.includes(appliedSearchTerm.toLowerCase());
 
-							// Show item only if it matches all filters
+							// Show item only if it matches all applied filters
 							if (matchesMainFilter && matchesTagFilter && matchesSearch) {
 								item.classList.remove('hidden');
 								hasVisibleItems = true;
@@ -1375,12 +1408,57 @@ const title = "Negar Haeri - Avocate";
 							group.classList.add('hidden');
 						}
 					});
+
+					// Update UI to reflect which filters were actually applied
+					if (appliedMainFilter !== originalMainFilter) {
+						mainFilterButtons.forEach(btn => {
+							btn.classList.toggle('active', btn.dataset.type === 'all');
+						});
+						document.querySelectorAll('.dropdown-filter-link').forEach(link => {
+							link.classList.toggle('active', link.dataset.filterType === 'all');
+						});
+					}
+					if (appliedTagFilter !== originalTagFilter) {
+						tagButtons.forEach(btn => {
+							btn.classList.toggle('active', btn.dataset.tag === 'all');
+						});
+						document.querySelectorAll('.dropdown-tag-link').forEach(link => {
+							link.classList.toggle('active', link.dataset.filterTag === 'all');
+						});
+					}
+					if (appliedSearchTerm !== originalSearchTerm && searchInput) {
+						searchInput.value = '';
+					}
+				}
+
+				// Helper function to count visible items with given filters
+				function countVisibleItems(mainFilter, tagFilter, searchTerm) {
+					let count = 0;
+					pressGroups.forEach(group => {
+						const groupType = group.dataset.type;
+						const items = group.querySelectorAll('.press-list li, .interview-list li');
+
+						items.forEach(item => {
+							const itemTags = item.dataset.tags || '';
+							const itemText = item.textContent.toLowerCase();
+
+							const matchesMainFilter = mainFilter === 'all' || groupType === mainFilter;
+							const matchesTagFilter = tagFilter === 'all' || itemTags.split(' ').includes(tagFilter);
+							const matchesSearch = searchTerm === '' || itemText.includes(searchTerm.toLowerCase());
+
+							if (matchesMainFilter && matchesTagFilter && matchesSearch) {
+								count++;
+							}
+						});
+					});
+					return count;
 				}
 
 				// Main category filter buttons
 				mainFilterButtons.forEach(button => {
 					button.addEventListener('click', () => {
 						currentMainFilter = button.dataset.type;
+						lastAction = 'type';
 
 						// Update active button
 						mainFilterButtons.forEach(btn => btn.classList.remove('active'));
@@ -1399,6 +1477,7 @@ const title = "Negar Haeri - Avocate";
 				tagButtons.forEach(button => {
 					button.addEventListener('click', () => {
 						currentTagFilter = button.dataset.tag;
+						lastAction = 'tag';
 
 						// Update active button
 						tagButtons.forEach(btn => btn.classList.remove('active'));
@@ -1416,6 +1495,7 @@ const title = "Negar Haeri - Avocate";
 				// Search input
 				searchInput.addEventListener('input', (e) => {
 					currentSearchTerm = e.target.value;
+					lastAction = 'search';
 					applyFilters();
 				});
 
