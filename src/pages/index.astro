@@ -30,18 +30,18 @@ const title = "Negar Haeri - Avocate";
 						<div class="dropdown-content mega-menu">
 							<div class="mega-menu-column">
 								<h4 class="mega-menu-title">Types de média</h4>
-								<a href="#presse" onclick="filterPress('all')">Tous</a>
-								<a href="#presse" onclick="filterPress('articles')">Articles de presse</a>
-								<a href="#presse" onclick="filterPress('radio')">Radio/Podcasts</a>
-								<a href="#presse" onclick="filterPress('tribune')">Tribune</a>
-								<a href="#presse" onclick="filterPress('interviews')">Interviews</a>
+								<a href="#presse" class="dropdown-filter-link active" data-filter-type="all" onclick="filterPress('all')">Tous</a>
+								<a href="#presse" class="dropdown-filter-link" data-filter-type="articles" onclick="filterPress('articles')">Articles de presse</a>
+								<a href="#presse" class="dropdown-filter-link" data-filter-type="radio" onclick="filterPress('radio')">Radio/Podcasts</a>
+								<a href="#presse" class="dropdown-filter-link" data-filter-type="tribune" onclick="filterPress('tribune')">Tribune</a>
+								<a href="#presse" class="dropdown-filter-link" data-filter-type="interviews" onclick="filterPress('interviews')">Interviews</a>
 							</div>
 							<div class="mega-menu-column">
 								<h4 class="mega-menu-title">Les affaires</h4>
-								<a href="#presse" onclick="filterByTag('all')">Toutes</a>
-								<a href="#presse" onclick="filterByTag('shaina')">Shaïna Hansye</a>
-								<a href="#presse" onclick="filterByTag('13nov')">13 Novembre</a>
-								<a href="#presse" onclick="filterByTag('caubere')">Philippe Caubère</a>
+								<a href="#presse" class="dropdown-tag-link active" data-filter-tag="all" onclick="filterByTag('all')">Toutes</a>
+								<a href="#presse" class="dropdown-tag-link" data-filter-tag="shaina" onclick="filterByTag('shaina')">Shaïna Hansye</a>
+								<a href="#presse" class="dropdown-tag-link" data-filter-tag="13nov" onclick="filterByTag('13nov')">13 Novembre</a>
+								<a href="#presse" class="dropdown-tag-link" data-filter-tag="caubere" onclick="filterByTag('caubere')">Philippe Caubère</a>
 							</div>
 						</div>
 					</div>
@@ -533,6 +533,12 @@ const title = "Negar Haeri - Avocate";
 			.dropdown-content a:hover {
 				background-color: var(--color-bg);
 				color: var(--color-accent-2);
+			}
+
+			.dropdown-content a.active {
+				background-color: var(--color-bg);
+				color: var(--color-accent);
+				font-weight: 500;
 			}
 
 			/* Mega Menu Styles */
@@ -1303,6 +1309,14 @@ const title = "Negar Haeri - Avocate";
 					});
 					if (searchInput) searchInput.value = '';
 
+					// Update dropdown links
+					document.querySelectorAll('.dropdown-filter-link').forEach(link => {
+						link.classList.toggle('active', link.dataset.filterType === type);
+					});
+					document.querySelectorAll('.dropdown-tag-link').forEach(link => {
+						link.classList.toggle('active', link.dataset.filterTag === 'all');
+					});
+
 					applyFilters();
 				};
 
@@ -1316,6 +1330,11 @@ const title = "Negar Haeri - Avocate";
 						btn.classList.toggle('active', btn.dataset.tag === tag);
 					});
 					if (searchInput) searchInput.value = '';
+
+					// Update dropdown links
+					document.querySelectorAll('.dropdown-tag-link').forEach(link => {
+						link.classList.toggle('active', link.dataset.filterTag === tag);
+					});
 
 					applyFilters();
 				};
@@ -1367,6 +1386,11 @@ const title = "Negar Haeri - Avocate";
 						mainFilterButtons.forEach(btn => btn.classList.remove('active'));
 						button.classList.add('active');
 
+						// Update dropdown links
+						document.querySelectorAll('.dropdown-filter-link').forEach(link => {
+							link.classList.toggle('active', link.dataset.filterType === button.dataset.type);
+						});
+
 						applyFilters();
 					});
 				});
@@ -1379,6 +1403,11 @@ const title = "Negar Haeri - Avocate";
 						// Update active button
 						tagButtons.forEach(btn => btn.classList.remove('active'));
 						button.classList.add('active');
+
+						// Update dropdown links
+						document.querySelectorAll('.dropdown-tag-link').forEach(link => {
+							link.classList.toggle('active', link.dataset.filterTag === button.dataset.tag);
+						});
 
 						applyFilters();
 					});
