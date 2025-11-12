@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background avec couleur accent du site -->
+  <rect width="100" height="100" fill="#8b7355" rx="12"/>
+
+  <!-- Initiales NH en police serif -->
+  <text
+    x="50"
+    y="50"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="42"
+    font-weight="600"
+    fill="#fafafa"
+    text-anchor="middle"
+    dominant-baseline="central">NH</text>
+</svg>
