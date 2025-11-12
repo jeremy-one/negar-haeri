@@ -906,6 +906,13 @@ const title = "Negar Haeri - Avocate";
 				color: var(--color-accent);
 			}
 
+			/* Placeholder pour les interviews sans lien */
+			.interview-list li:not(:has(a)) .source::before {
+				background-image: none;
+				background-color: #d0d0d0;
+				border-radius: 3px;
+			}
+
 			.contact-wrapper {
 				display: grid;
 				grid-template-columns: 1fr 1.5fr;
