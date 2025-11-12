@@ -731,7 +731,9 @@ const title = "Negar Haeri - Avocate";
 			}
 
 			.source[data-media="charliehebdo"]::before {
-				background-image: url('https://charliehebdo.fr/wp-content/themes/charlie/theme/img/favicon.ico');
+				background-image: none;
+				background-color: #d0d0d0;
+				border-radius: 3px;
 			}
 
 			.source[data-media="vanityfair"]::before {
@@ -751,11 +753,15 @@ const title = "Negar Haeri - Avocate";
 			}
 
 			.source[data-media="interviewnet"]::before {
-				background-image: url('https://logo.clearbit.com/interviewmagazine.com');
+				background-image: none;
+				background-color: #d0d0d0;
+				border-radius: 3px;
 			}
 
 			.source[data-media="semainejuridique"]::before {
-				background-image: url('https://logo.clearbit.com/lexisnexis.fr');
+				background-image: none;
+				background-color: #d0d0d0;
+				border-radius: 3px;
 			}
 
 			.title {
@@ -904,13 +910,6 @@ const title = "Negar Haeri - Avocate";
 
 			.interview-list a:hover {
 				color: var(--color-accent);
-			}
-
-			/* Placeholder pour les interviews sans lien */
-			.interview-list li:not(:has(a)) .source::before {
-				background-image: none;
-				background-color: #d0d0d0;
-				border-radius: 3px;
 			}
 
 			.contact-wrapper {
