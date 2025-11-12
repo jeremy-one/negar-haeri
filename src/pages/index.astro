@@ -27,12 +27,22 @@ const title = "Negar Haeri - Avocate";
 								<path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 							</svg>
 						</a>
-						<div class="dropdown-content">
-							<a href="#presse" onclick="filterPress('all')">Tous</a>
-							<a href="#presse" onclick="filterPress('articles')">Articles de presse</a>
-							<a href="#presse" onclick="filterPress('radio')">Radio/Podcasts</a>
-							<a href="#presse" onclick="filterPress('tribune')">Tribune</a>
-							<a href="#presse" onclick="filterPress('interviews')">Interviews</a>
+						<div class="dropdown-content mega-menu">
+							<div class="mega-menu-column">
+								<h4 class="mega-menu-title">Types de média</h4>
+								<a href="#presse" onclick="filterPress('all')">Tous</a>
+								<a href="#presse" onclick="filterPress('articles')">Articles de presse</a>
+								<a href="#presse" onclick="filterPress('radio')">Radio/Podcasts</a>
+								<a href="#presse" onclick="filterPress('tribune')">Tribune</a>
+								<a href="#presse" onclick="filterPress('interviews')">Interviews</a>
+							</div>
+							<div class="mega-menu-column">
+								<h4 class="mega-menu-title">Les affaires</h4>
+								<a href="#presse" onclick="filterByTag('all')">Tous</a>
+								<a href="#presse" onclick="filterByTag('shaina')">Shaïna Hansye</a>
+								<a href="#presse" onclick="filterByTag('13nov')">13 Novembre</a>
+								<a href="#presse" onclick="filterByTag('caubere')">Philippe Caubère</a>
+							</div>
 						</div>
 					</div>
 					<a href="#contact" class="nav-link">Contact</a>
@@ -508,6 +518,33 @@ const title = "Negar Haeri - Avocate";
 			.dropdown-content a:hover {
 				background-color: var(--color-bg);
 				color: var(--color-accent-2);
+			}
+
+			/* Mega Menu Styles */
+			.dropdown-content.mega-menu {
+				min-width: 480px;
+				max-width: 520px;
+				display: flex;
+				gap: 0;
+			}
+
+			.mega-menu-column {
+				flex: 1;
+				padding: 1rem 0;
+			}
+
+			.mega-menu-column:first-child {
+				border-right: 1px solid #e0e0e0;
+			}
+
+			.mega-menu-title {
+				font-size: 0.75rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				color: var(--color-accent);
+				padding: 0.5rem 1.25rem;
+				margin: 0 0 0.5rem 0;
 			}
 
 			h1 {
@@ -1227,6 +1264,20 @@ const title = "Negar Haeri - Avocate";
 					});
 					tagButtons.forEach(btn => {
 						btn.classList.toggle('active', btn.dataset.tag === 'all');
+					});
+					if (searchInput) searchInput.value = '';
+
+					applyFilters();
+				};
+
+				// Function to filter by tag from dropdown
+				window.filterByTag = function(tag) {
+					currentTagFilter = tag;
+					currentSearchTerm = '';
+
+					// Update UI
+					tagButtons.forEach(btn => {
+						btn.classList.toggle('active', btn.dataset.tag === tag);
 					});
 					if (searchInput) searchInput.value = '';
 
