@@ -662,6 +662,12 @@ const title = "Negar Haeri - Avocate";
 				list-style: none;
 			}
 
+			.press-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1.2rem;
+			}
+
 			.media-list li,
 			.press-list li,
 			.interview-list li {
@@ -671,6 +677,11 @@ const title = "Negar Haeri - Avocate";
 				border-radius: 8px;
 				transition: all 0.3s ease;
 				border: 1px solid #e8e8e8;
+			}
+
+			.press-list li {
+				margin-bottom: 0;
+				flex: 1 1 calc(50% - 0.6rem);
 			}
 
 			.media-list li:hover,
