@@ -459,6 +459,21 @@ const title = "Negar Haeri - Avocate";
 				color: var(--color-accent-2);
 			}
 
+			.nav-link.active {
+				color: var(--color-accent);
+				position: relative;
+			}
+
+			.nav-link.active::after {
+				content: '';
+				position: absolute;
+				bottom: -8px;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: var(--color-accent);
+			}
+
 			.nav-dropdown {
 				position: relative;
 			}
@@ -1376,6 +1391,32 @@ const title = "Negar Haeri - Avocate";
 				});
 
 			});
+
+			// Active navigation based on scroll position
+			const sections = document.querySelectorAll('section[id]');
+			const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+			function updateActiveLink() {
+				let current = '';
+
+				sections.forEach(section => {
+					const sectionTop = section.offsetTop;
+					const sectionHeight = section.clientHeight;
+					if (window.scrollY >= (sectionTop - 200)) {
+						current = section.getAttribute('id');
+					}
+				});
+
+				navLinks.forEach(link => {
+					link.classList.remove('active');
+					if (link.getAttribute('href') === `#${current}`) {
+						link.classList.add('active');
+					}
+				});
+			}
+
+			window.addEventListener('scroll', updateActiveLink);
+			updateActiveLink(); // Initial call on page load
 		</script>
 	</body>
 </html>
