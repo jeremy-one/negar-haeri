@@ -378,7 +378,7 @@ const title = "Négar Haeri - Avocate";
 			</footer>
 		</div>
 
-		<style>
+		<style is:global>
 			:root {
 				--color-primary: #0f1f35;
 				--color-secondary: #0f1f35;
@@ -426,6 +426,27 @@ const title = "Négar Haeri - Avocate";
 				width: 100%;
 				height: auto;
 				fill: #F5F5F3;
+			}
+
+			/* Animations d'apparition au scroll */
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(40px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			section > * {
+				opacity: 0;
+				transform: translateY(40px);
+			}
+
+			section.animate-in > * {
+				animation: fadeInUp 0.8s ease-out forwards;
 			}
 
 			.container {
@@ -1841,6 +1862,39 @@ const title = "Négar Haeri - Avocate";
 						offset: [0, -33]
 					})
 					.openPopup();
+			});
+		</script>
+
+		<script>
+			// Animations d'apparition au scroll
+			document.addEventListener('DOMContentLoaded', () => {
+				const sections = document.querySelectorAll('section');
+
+				// La première section (hero) apparaît immédiatement
+				if (sections.length > 0) {
+					setTimeout(() => {
+						sections[0].classList.add('animate-in');
+					}, 100);
+				}
+
+				// Fonction pour vérifier si une section est visible
+				function checkSections() {
+					sections.forEach((section, index) => {
+						if (index === 0) return; // Skip hero section
+						if (section.classList.contains('animate-in')) return; // Déjà animée
+
+						const rect = section.getBoundingClientRect();
+						const windowHeight = window.innerHeight;
+
+						// La section est visible si son haut est dans les 80% bas de l'écran
+						if (rect.top < windowHeight * 0.8) {
+							section.classList.add('animate-in');
+						}
+					});
+				}
+
+				// Écouter le scroll uniquement (pas au chargement)
+				window.addEventListener('scroll', checkSections);
 			});
 		</script>
 	</body>
