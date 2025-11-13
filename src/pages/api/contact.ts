@@ -22,7 +22,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Envoi de l'email via Resend
     const result = await resend.emails.send({
-      from: 'Contact Site Web <onboarding@resend.dev>', // Adresse par défaut de Resend (gratuite)
+      from: 'Contact Site Web <contact@haeri-avocat.com>',
       to: 'nh@haeri-avocat.com',
       replyTo: email as string,
       subject: `Contact depuis le site web: ${subject}`,
