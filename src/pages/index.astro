@@ -1,5 +1,5 @@
 ---
-const title = "Negar Haeri - Avocate";
+const title = "Négar Haeri - Avocate";
 ---
 
 <!DOCTYPE html>
@@ -9,14 +9,31 @@ const title = "Negar Haeri - Avocate";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="Negar Haeri, avocate en droit pénal, auteure de 'La jeune fille et la mort'" />
+		<meta name="description" content="Négar Haeri, avocate en droit pénal, auteure de 'La jeune fille et la mort'" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 		<title>{title}</title>
 	</head>
 	<body>
+		<div class="watermark-logo">
+			<svg viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<g clip-path="url(#clip0_270_104)">
+					<path d="M2.6197 14.6824C2.49935 14.253 2.44624 13.809 2.46212 13.3647V1.44942L11.8576 15.3224C12.0873 14.4827 12.4529 13.6825 12.9409 12.9506V3.70824L12.3894 3.40708V12.2918L4.05758 0C3.52576 0 2.91516 0 2.20607 0C1.49698 0 0.531818 0 0 0V0.451775C0.418648 0.467146 0.834506 0.523913 1.24091 0.62118C1.36916 0.658532 1.48531 0.72656 1.57837 0.81879C1.67143 0.911021 1.73833 1.0244 1.77273 1.14824C1.89428 1.55167 1.94748 1.9711 1.9303 2.3906V13.3647C1.94658 13.8028 1.89346 14.2407 1.77273 14.6635C1.73757 14.8005 1.67185 14.9287 1.58006 15.0391C1.48827 15.1496 1.37258 15.2398 1.24091 15.3035C0.847623 15.4586 0.425397 15.5354 0 15.5294V16C0.734876 15.9642 1.47119 15.9642 2.20607 16C3.25001 16 4.05758 16 4.60909 16V15.5294C4.13865 15.5385 3.67071 15.4619 3.23031 15.3035C3.08684 15.2495 2.95768 15.1658 2.8521 15.0584C2.74653 14.951 2.66716 14.8226 2.6197 14.6824Z" fill="#F5F5F3"/>
+					<path d="M24.7387 0.658921C24.6137 0.701945 24.5008 0.771864 24.4085 0.863253C24.3163 0.954641 24.2473 1.06505 24.2069 1.18598C24.0939 1.59078 24.0474 2.0099 24.069 2.42834V13.7225C24.0447 14.141 24.0913 14.5605 24.2069 14.9648C24.2473 15.0857 24.3163 15.1962 24.4085 15.2875C24.5008 15.3789 24.6137 15.4488 24.7387 15.4919C25.141 15.608 25.5594 15.6651 25.9796 15.6613V16.1319C25.3099 16.1319 24.3054 16.1319 22.9463 16.1319C21.5872 16.1319 20.6811 16.1319 19.9523 16.1319V15.6613C20.3726 15.6651 20.7909 15.608 21.1932 15.4919C21.3182 15.4488 21.4312 15.3789 21.5234 15.2875C21.6156 15.1962 21.6846 15.0857 21.7251 14.9648C21.8406 14.5605 21.8872 14.141 21.8629 13.7225V8.18833H14.1811V13.6095C14.1569 14.028 14.2034 14.4475 14.319 14.8518C14.3594 14.9728 14.4284 15.0832 14.5207 15.1746C14.6129 15.266 14.7258 15.3359 14.8508 15.3789C15.2531 15.495 15.6715 15.5521 16.0917 15.5483V16.0189C15.3629 16.0189 14.3781 16.0189 13.0978 16.0189C11.8175 16.0189 10.7342 16.0189 10.0645 16.0189V15.5483C10.4847 15.5521 10.9031 15.495 11.3054 15.3789C11.4303 15.3359 11.5433 15.266 11.6355 15.1746C11.7277 15.0832 11.7967 14.9728 11.8372 14.8518C11.9528 14.4475 11.9993 14.028 11.9751 13.6095V2.3154C11.9967 1.89696 11.9501 1.47784 11.8372 1.07304C11.7967 0.952113 11.7277 0.841676 11.6355 0.750287C11.5433 0.658899 11.4303 0.589008 11.3054 0.545985C10.899 0.448718 10.4831 0.391951 10.0645 0.37658V-0.0751953C10.7342 -0.0751953 11.7387 -0.0751953 13.0978 -0.0751953C14.4569 -0.0751953 15.3629 -0.0751953 16.0917 -0.0751953V0.37658C15.6822 0.431319 15.2796 0.525917 14.8902 0.658921C14.7652 0.701945 14.6523 0.771864 14.5601 0.863253C14.4678 0.954641 14.3988 1.06505 14.3584 1.18598C14.2454 1.59078 14.1989 2.0099 14.2205 2.42834V7.7554H21.9023V2.42834C21.9239 2.0099 21.8774 1.59078 21.7645 1.18598C21.724 1.06505 21.655 0.954641 21.5628 0.863253C21.4706 0.771864 21.3576 0.701945 21.2326 0.658921C20.8262 0.561654 20.4104 0.504888 19.9917 0.489516V0.0377413C20.7205 0.0377413 21.7054 0.0377413 22.9857 0.0377413C24.266 0.0377413 25.3493 0.0377413 26.019 0.0377413V0.489516C25.5871 0.502256 25.1579 0.559042 24.7387 0.658921Z" fill="#F5F5F3"/>
+				</g>
+				<defs>
+					<clipPath id="clip0_270_104">
+						<rect width="26" height="16" fill="white"/>
+					</clipPath>
+				</defs>
+			</svg>
+		</div>
 		<header>
 			<div class="header-content">
 				<div class="header-title">
-					<h1>Negar Haeri</h1>
+					<h1><span class="initials"><span class="letter-n">N</span><span class="letter-h">H</span></span> | Négar Haeri</h1>
 					<p class="subtitle">Avocate en droit pénal</p>
 				</div>
 				<nav class="main-nav">
@@ -95,7 +112,7 @@ const title = "Negar Haeri - Avocate";
 				</section>
 
 				<!-- Press Section with Filters -->
-				<section id="presse" class="press-section">
+				<section id="presse" class="press-section show-all">
 					<h2>Presse</h2>
 
 					<!-- Main Category Filters (Big Buttons) -->
@@ -125,11 +142,32 @@ const title = "Negar Haeri - Avocate";
 					<div class="press-group" data-type="articles">
 						<h3>Articles de presse</h3>
 						<ul class="press-list">
-							<li data-tags="shaina">
-								<a href="https://www.lemonde.fr/m-perso/article/2022/11/26/fille-facile-ou-comment-la-rumeur-a-tue-shaina-15-ans_6151744_4497916.html" target="_blank" rel="noopener noreferrer">
+							<li data-tags="caubere">
+								<a href="https://www.liberation.fr/societe/police-justice/jetais-une-proie-parfaite-une-gamine-paumee-deux-femmes-accusent-le-comedien-philippe-caubere-de-viols-alors-quelles-etaient-mineures-20250102_OHLYMN7M4JFAFF75SO3F4O7MEU/" target="_blank" rel="noopener noreferrer">
+									<span class="source" data-media="liberation">Libération</span>
+									« 'J'étais une proie parfaite une gamine paumée' : deux femmes accusent le comédien Philippe Caubère de viol alors qu'elles étaient mineures »
+									<span class="date">2 janvier 2025</span>
+								</a>
+							</li>
+							<li data-tags="caubere">
+								<a href="https://www.liberation.fr/societe/droits-des-femmes/violences-sexuelles-le-comedien-philippe-caubere-mis-en-examen-20240208_BZICLVJQW5C5LBPTWBSBQ4SFRM/" target="_blank" rel="noopener noreferrer">
+									<span class="source" data-media="liberation">Libération</span>
+									« Violences sexuelles : le comédien Philippe Caubère mis en examen »
+									<span class="date">8 février 2024</span>
+								</a>
+							</li>
+							<li data-tags="caubere">
+								<a href="https://www.lemonde.fr/societe/article/2024/01/10/plainte-contre-philippe-caubere-pour-atteinte-sexuelle-sur-mineure-les-echanges-qui-detaillent-un-mecanisme-d-emprise_6210061_3224.html" target="_blank" rel="noopener noreferrer">
 									<span class="source" data-media="lemonde">Le Monde</span>
-									« 'Fille facile', ou comment la rumeur a tué Shaïna, 15 ans »
-									<span class="date">26 novembre 2022</span>
+									« Plainte contre Philippe Caubère pour 'atteinte sexuelle' sur mineure : les échanges qui détaillent un mécanisme d'emprise »
+									<span class="date">10 janvier 2024</span>
+								</a>
+							</li>
+							<li data-tags="caubere">
+								<a href="https://www.lemonde.fr/societe/article/2024/01/09/le-metteur-en-scene-philippe-caubere-regrette-sa-relation-passee-avec-une-mineure_6209927_3224.html" target="_blank" rel="noopener noreferrer">
+									<span class="source" data-media="lemonde">Le Monde</span>
+									« Le metteur en scène Philippe Caubère regrette sa relation passée avec une mineure »
+									<span class="date">9 janvier 2024</span>
 								</a>
 							</li>
 							<li data-tags="shaina">
@@ -146,11 +184,11 @@ const title = "Negar Haeri - Avocate";
 									<span class="date">10 juin 2023</span>
 								</a>
 							</li>
-							<li data-tags="13nov">
-								<a href="https://www.radiofrance.fr/franceinter/au-proces-du-13-novembre-me-negar-haeri-une-si-fine-avocate-de-la-defense-1890208" target="_blank" rel="noopener noreferrer">
-									<span class="source" data-media="franceinter">France Inter</span>
-									« Au procès du 13 novembre, Me Negar Haeri, une si fine avocate de la défense »
-									<span class="date">16 juin 2022</span>
+							<li data-tags="shaina">
+								<a href="https://www.lemonde.fr/m-perso/article/2022/11/26/fille-facile-ou-comment-la-rumeur-a-tue-shaina-15-ans_6151744_4497916.html" target="_blank" rel="noopener noreferrer">
+									<span class="source" data-media="lemonde">Le Monde</span>
+									« 'Fille facile', ou comment la rumeur a tué Shaïna, 15 ans »
+									<span class="date">26 novembre 2022</span>
 								</a>
 							</li>
 							<li data-tags="13nov">
@@ -160,32 +198,11 @@ const title = "Negar Haeri - Avocate";
 									<span class="date">27 novembre 2022</span>
 								</a>
 							</li>
-							<li data-tags="caubere">
-								<a href="https://www.lemonde.fr/societe/article/2024/01/09/le-metteur-en-scene-philippe-caubere-regrette-sa-relation-passee-avec-une-mineure_6209927_3224.html" target="_blank" rel="noopener noreferrer">
-									<span class="source" data-media="lemonde">Le Monde</span>
-									« Le metteur en scène Philippe Caubère regrette sa relation passée avec une mineure »
-									<span class="date">9 janvier 2024</span>
-								</a>
-							</li>
-							<li data-tags="caubere">
-								<a href="https://www.lemonde.fr/societe/article/2024/01/10/plainte-contre-philippe-caubere-pour-atteinte-sexuelle-sur-mineure-les-echanges-qui-detaillent-un-mecanisme-d-emprise_6210061_3224.html" target="_blank" rel="noopener noreferrer">
-									<span class="source" data-media="lemonde">Le Monde</span>
-									« Plainte contre Philippe Caubère pour 'atteinte sexuelle' sur mineure : les échanges qui détaillent un mécanisme d'emprise »
-									<span class="date">10 janvier 2024</span>
-								</a>
-							</li>
-							<li data-tags="caubere">
-								<a href="https://www.liberation.fr/societe/droits-des-femmes/violences-sexuelles-le-comedien-philippe-caubere-mis-en-examen-20240208_BZICLVJQW5C5LBPTWBSBQ4SFRM/" target="_blank" rel="noopener noreferrer">
-									<span class="source" data-media="liberation">Libération</span>
-									« Violences sexuelles : le comédien Philippe Caubère mis en examen »
-									<span class="date">8 février 2024</span>
-								</a>
-							</li>
-							<li data-tags="caubere">
-								<a href="https://www.liberation.fr/societe/police-justice/jetais-une-proie-parfaite-une-gamine-paumee-deux-femmes-accusent-le-comedien-philippe-caubere-de-viols-alors-quelles-etaient-mineures-20250102_OHLYMN7M4JFAFF75SO3F4O7MEU/" target="_blank" rel="noopener noreferrer">
-									<span class="source" data-media="liberation">Libération</span>
-									« 'J'étais une proie parfaite une gamine paumée' : deux femmes accusent le comédien Philippe Caubère de viol alors qu'elles étaient mineures »
-									<span class="date">2 janvier 2025</span>
+							<li data-tags="13nov">
+								<a href="https://www.radiofrance.fr/franceinter/au-proces-du-13-novembre-me-negar-haeri-une-si-fine-avocate-de-la-defense-1890208" target="_blank" rel="noopener noreferrer">
+									<span class="source" data-media="franceinter">France Inter</span>
+									« Au procès du 13 novembre, Me Negar Haeri, une si fine avocate de la défense »
+									<span class="date">16 juin 2022</span>
 								</a>
 							</li>
 						</ul>
@@ -209,10 +226,11 @@ const title = "Negar Haeri - Avocate";
 					<div class="press-group" data-type="radio">
 						<h3>Radio/Podcasts</h3>
 						<ul class="press-list">
-							<li>
-								<a href="https://www.rts.ch/audio-podcast/2017/audio/nez-a-nez-avec-negar-haeri-25496564.html" target="_blank" rel="noopener noreferrer">
-									<span class="source" data-media="rts">RTS</span>
-									<span class="title">Nez à nez avec Negar Haeri</span>
+							<li data-tags="shaina">
+								<a href="https://www.franceinfo.fr/replay-radio/ils-ont-fait-l-actu/ils-ont-fait-l-actu-maitre-negar-haeri-avocate-de-la-famille-de-shaina-hansye-revient-sur-le-proces-de-l-assassin-de-la-victime-agee-de-15-ans_5913206.html" target="_blank" rel="noopener noreferrer">
+									<span class="source" data-media="franceinfo">France Info</span>
+									<span class="title">Maître Negar Haeri, avocate de la famille de Shaïna Hansye revient sur le procès de l'assassin de la victime âgée de 15 ans</span>
+									<span class="date">9 août 2023</span>
 								</a>
 							</li>
 							<li data-tags="shaina">
@@ -222,11 +240,11 @@ const title = "Negar Haeri - Avocate";
 									<span class="date">12 janvier 2022</span>
 								</a>
 							</li>
-							<li data-tags="shaina">
-								<a href="https://www.franceinfo.fr/replay-radio/ils-ont-fait-l-actu/ils-ont-fait-l-actu-maitre-negar-haeri-avocate-de-la-famille-de-shaina-hansye-revient-sur-le-proces-de-l-assassin-de-la-victime-agee-de-15-ans_5913206.html" target="_blank" rel="noopener noreferrer">
-									<span class="source" data-media="franceinfo">France Info</span>
-									<span class="title">Maître Negar Haeri, avocate de la famille de Shaïna Hansye revient sur le procès de l'assassin de la victime âgée de 15 ans</span>
-									<span class="date">9 août 2023</span>
+							<li>
+								<a href="https://www.rts.ch/audio-podcast/2017/audio/nez-a-nez-avec-negar-haeri-25496564.html" target="_blank" rel="noopener noreferrer">
+									<span class="source" data-media="rts">RTS</span>
+									<span class="title">Nez à nez avec Negar Haeri</span>
+									<span class="date">8 juillet 2017</span>
 								</a>
 							</li>
 						</ul>
@@ -237,24 +255,19 @@ const title = "Negar Haeri - Avocate";
 						<h3>Interviews</h3>
 						<ul class="interview-list">
 							<li data-tags="shaina">
-								<span class="source" data-media="charliehebdo">Charlie Hebdo</span>
-								<span class="date">24 septembre 2025</span>
-							</li>
-							<li data-tags="shaina">
-								<span class="source" data-media="vanityfair">Vanity Fair</span>
-								<span class="date">24 septembre 2025</span>
-							</li>
-							<li data-tags="shaina">
-								<span class="source" data-media="interviewnet">Interview Net</span>
-								<span class="date">26 septembre 2025</span>
+								<span class="source" data-media="semainejuridique">Semaine juridique</span>
+								<span class="date">27 octobre 2025</span>
 							</li>
 							<li data-tags="shaina">
 								<span class="source" data-media="marieclaire">Marie Claire</span>
 								<span class="date">3 octobre 2025</span>
 							</li>
 							<li data-tags="shaina">
-								<span class="source" data-media="semainejuridique">Semaine juridique</span>
-								<span class="date">27 octobre 2025</span>
+								<a href="https://www.decideurs-juridiques.com/strategie-juridiques/62537-la-jeune-fille-et-la-mort-le-recit-d-une-avocate-sur-l-immaturite-de-la-justice-face-aux-violences-faites-aux-femmes.html" target="_blank" rel="noopener noreferrer">
+									<span class="source" data-media="decideurs">Décideurs juridiques</span>
+									« La jeune fille et la mort » : le récit d'une avocate sur l'immaturité de la justice face aux violences faites aux femmes
+									<span class="date">Septembre 2025</span>
+								</a>
 							</li>
 							<li data-tags="shaina">
 								<a href="https://www.actu-juridique.fr/droit-penal/negar-haeri-quand-une-affaire-change-tout/" target="_blank" rel="noopener noreferrer">
@@ -264,10 +277,16 @@ const title = "Negar Haeri - Avocate";
 								</a>
 							</li>
 							<li data-tags="shaina">
-								<a href="https://www.decideurs-juridiques.com/strategie-juridiques/62537-la-jeune-fille-et-la-mort-le-recit-d-une-avocate-sur-l-immaturite-de-la-justice-face-aux-violences-faites-aux-femmes.html" target="_blank" rel="noopener noreferrer">
-									<span class="source" data-media="decideurs">Décideurs juridiques</span>
-									« La jeune fille et la mort » : le récit d'une avocate sur l'immaturité de la justice face aux violences faites aux femmes
-								</a>
+								<span class="source" data-media="interviewnet">Interview Net</span>
+								<span class="date">26 septembre 2025</span>
+							</li>
+							<li data-tags="shaina">
+								<span class="source" data-media="charliehebdo">Charlie Hebdo</span>
+								<span class="date">24 septembre 2025</span>
+							</li>
+							<li data-tags="shaina">
+								<span class="source" data-media="vanityfair">Vanity Fair</span>
+								<span class="date">24 septembre 2025</span>
 							</li>
 						</ul>
 					</div>
@@ -346,7 +365,14 @@ const title = "Negar Haeri - Avocate";
 					</div>
 				</section>
 			</main>
+		</div>
 
+		<!-- Map Section - Full Width -->
+		<section id="map" class="map-section">
+			<div id="mapContainer" class="map-container"></div>
+		</section>
+
+		<div class="container">
 			<footer>
 				<p>&copy; 2025 Negar Haeri</p>
 			</footer>
@@ -354,14 +380,14 @@ const title = "Negar Haeri - Avocate";
 
 		<style>
 			:root {
-				--color-primary: #1a1a1a;
-				--color-secondary: #4a4a4a;
+				--color-primary: #0f1f35;
+				--color-secondary: #0f1f35;
 				--color-accent: #8b7355;
 				--color-accent-2: #2c5f6f;
 				--color-bg: #fafafa;
 				--color-white: #ffffff;
-				--font-serif: 'Georgia', 'Times New Roman', serif;
-				--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+				--font-serif: 'PT Serif', 'Georgia', 'Times New Roman', serif;
+				--font-sans: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 			}
 
 			* {
@@ -383,21 +409,23 @@ const title = "Negar Haeri - Avocate";
 				position: relative;
 			}
 
-			body::before {
-				content: 'NH';
+			.watermark-logo {
 				position: fixed;
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
-				font-family: var(--font-serif);
-				font-size: 28rem;
-				font-weight: 300;
-				color: var(--color-accent);
-				opacity: 0.04;
 				z-index: 0;
 				pointer-events: none;
 				user-select: none;
-				line-height: 1;
+				width: 46vw;
+				max-width: 1200px;
+				opacity: 1;
+			}
+
+			.watermark-logo svg {
+				width: 100%;
+				height: auto;
+				fill: #F5F5F3;
 			}
 
 			.container {
@@ -470,7 +498,7 @@ const title = "Negar Haeri - Avocate";
 				bottom: -8px;
 				left: 0;
 				width: 100%;
-				height: 2px;
+				height: 1px;
 				background-color: var(--color-accent);
 			}
 
@@ -569,11 +597,25 @@ const title = "Negar Haeri - Avocate";
 			}
 
 			h1 {
-				font-family: var(--font-serif);
+				font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
 				font-size: 1.8rem;
 				font-weight: 400;
 				margin-bottom: -6px;
 				color: var(--color-primary);
+				position: relative;
+				left: -4px;
+			}
+
+			h1 .initials {
+				font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+				font-weight: 500;
+				position: relative;
+				left: 8px;
+			}
+
+			span.letter-h {
+				position: relative;
+				left: -8px;
 			}
 
 			.subtitle {
@@ -588,7 +630,7 @@ const title = "Negar Haeri - Avocate";
 				font-size: 2.5rem;
 				font-weight: 400;
 				margin-bottom: 2rem;
-				color: var(--color-accent);
+				color: var(--color-primary);
 				position: relative;
 				padding-bottom: 1rem;
 			}
@@ -599,8 +641,8 @@ const title = "Negar Haeri - Avocate";
 				bottom: 0;
 				left: 0;
 				width: 150px;
-				height: 3px;
-				background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-2) 100%);
+				height: 1px;
+				background: var(--color-accent);
 				border-radius: 2px;
 			}
 
@@ -662,10 +704,11 @@ const title = "Negar Haeri - Avocate";
 
 			.profile-photo {
 				width: 100%;
-				height: auto;
+				height: 550px;
 				border-radius: 8px;
 				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 				object-fit: cover;
+				object-position: 80%;
 				transition: box-shadow 0.3s ease;
 			}
 
@@ -851,6 +894,7 @@ const title = "Negar Haeri - Avocate";
 				font-size: 0.85rem;
 				color: var(--color-secondary);
 				font-style: italic;
+				display: block;
 			}
 
 			/* Search Bar */
@@ -965,6 +1009,43 @@ const title = "Negar Haeri - Avocate";
 
 			.press-group.hidden {
 				display: none;
+			}
+
+			/* Mode "Tous" : fusion CSS avec une grille globale */
+			.press-section.show-all {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1.2rem;
+			}
+
+			/* Les éléments de navigation et filtres prennent toute la largeur */
+			.press-section.show-all > h2,
+			.press-section.show-all > .main-filter-container,
+			.press-section.show-all > .search-container,
+			.press-section.show-all > .tag-filter-container {
+				grid-column: 1 / -1;
+			}
+
+			/* Les groupes et listes utilisent display: contents pour que les li remontent */
+			.press-section.show-all .press-group {
+				display: contents;
+			}
+
+			.press-section.show-all .press-group h3 {
+				display: none;
+			}
+
+			.press-section.show-all .press-group .press-list,
+			.press-section.show-all .press-group .interview-list {
+				display: contents;
+			}
+
+			/* Les li s'affichent directement dans la grille parent et prennent toute la largeur */
+			.press-section.show-all .press-list li,
+			.press-section.show-all .interview-list li {
+				flex: none !important;
+				max-width: none !important;
+				width: 100%;
 			}
 
 			.press-list li.hidden,
@@ -1127,11 +1208,33 @@ const title = "Negar Haeri - Avocate";
 				box-shadow: 0 6px 16px rgba(139, 115, 85, 0.3);
 			}
 
+			/* Map Section */
+			.map-section {
+				width: 100vw;
+				position: relative;
+				left: 50%;
+				right: 50%;
+				margin-left: -50vw;
+				margin-right: -50vw;
+				margin-bottom: 0;
+			}
+
+			.map-container {
+				width: 100%;
+				height: 450px;
+			}
+
+			/* Le marqueur reste en couleur */
+			.custom-marker {
+				z-index: 1000;
+			}
+
+
 			footer {
 				text-align: center;
 				padding: 3rem 0;
 				border-top: 1px solid #e0e0e0;
-				margin-top: 4rem;
+				margin-top: 0;
 				color: var(--color-secondary);
 				font-size: 0.9rem;
 			}
@@ -1261,8 +1364,8 @@ const title = "Negar Haeri - Avocate";
 					padding: 0.6rem 1rem;
 				}
 
-				body::before {
-					font-size: 13rem;
+				.watermark-logo {
+					width: 80vw;
 				}
 
 				.form-row {
@@ -1289,6 +1392,7 @@ const title = "Negar Haeri - Avocate";
 				const mainFilterButtons = document.querySelectorAll('.main-filter-btn');
 				const tagButtons = document.querySelectorAll('.tag-btn');
 				const pressGroups = document.querySelectorAll('.press-group');
+				const pressSection = document.querySelector('.press-section');
 
 				let currentMainFilter = 'all';
 				let currentTagFilter = 'all';
@@ -1344,6 +1448,9 @@ const title = "Negar Haeri - Avocate";
 
 				// Function to apply all filters with smart fallback
 				function applyFilters() {
+					// Restaurer l'ordre original avant de filtrer
+					restoreOriginalOrder();
+
 					// Store original filters
 					const originalMainFilter = currentMainFilter;
 					const originalTagFilter = currentTagFilter;
@@ -1409,6 +1516,15 @@ const title = "Negar Haeri - Avocate";
 						}
 					});
 
+					// Gérer la classe show-all sur la section press
+					if (appliedMainFilter === 'all') {
+						pressSection.classList.add('show-all');
+						sortByDate();
+					} else {
+						pressSection.classList.remove('show-all');
+						// L'ordre original a déjà été restauré au début de applyFilters()
+					}
+
 					// Update UI to reflect which filters were actually applied
 					if (appliedMainFilter !== originalMainFilter) {
 						mainFilterButtons.forEach(btn => {
@@ -1429,6 +1545,149 @@ const title = "Negar Haeri - Avocate";
 					if (appliedSearchTerm !== originalSearchTerm && searchInput) {
 						searchInput.value = '';
 					}
+				}
+
+				// Fonction pour extraire et parser une date
+				function parseDate(dateString) {
+					if (!dateString) return new Date(0);
+
+					// Nettoyer la date
+					dateString = dateString.trim();
+
+					// Patterns de dates en français
+					const patterns = [
+						// "2 janvier 2025"
+						/(\d{1,2})\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+(\d{4})/i,
+						// "Septembre 2025"
+						/(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+(\d{4})/i,
+						// "2017"
+						/^(\d{4})$/
+					];
+
+					const months = {
+						'janvier': 0, 'février': 1, 'mars': 2, 'avril': 3, 'mai': 4, 'juin': 5,
+						'juillet': 6, 'août': 7, 'septembre': 8, 'octobre': 9, 'novembre': 10, 'décembre': 11
+					};
+
+					// Pattern 1: "2 janvier 2025"
+					let match = dateString.match(patterns[0]);
+					if (match) {
+						const day = parseInt(match[1]);
+						const month = months[match[2].toLowerCase()];
+						const year = parseInt(match[3]);
+						return new Date(year, month, day);
+					}
+
+					// Pattern 2: "Septembre 2025"
+					match = dateString.match(patterns[1]);
+					if (match) {
+						const month = months[match[1].toLowerCase()];
+						const year = parseInt(match[2]);
+						return new Date(year, month, 15); // Milieu du mois
+					}
+
+					// Pattern 3: "2017"
+					match = dateString.match(patterns[2]);
+					if (match) {
+						const year = parseInt(match[1]);
+						return new Date(year, 6, 1); // Milieu de l'année
+					}
+
+					return new Date(0);
+				}
+
+				// Sauvegarder l'ordre original
+				let originalOrder = new Map();
+
+				// Fonction pour trier par date
+				function sortByDate() {
+					// Collecter tous les items visibles avec leur date
+					const allItems = [];
+					pressGroups.forEach(group => {
+						const items = group.querySelectorAll('.press-list li:not(.hidden), .interview-list li:not(.hidden)');
+						items.forEach(item => {
+							const dateElement = item.querySelector('.date');
+							const dateText = dateElement ? dateElement.textContent : '';
+							const dateObj = parseDate(dateText);
+
+							// Sauvegarder l'ordre original (index dans le parent)
+							if (!originalOrder.has(item)) {
+								const parent = item.parentElement;
+								const siblings = Array.from(parent.children);
+								const index = siblings.indexOf(item);
+
+								originalOrder.set(item, {
+									parent: parent,
+									index: index
+								});
+							}
+
+							allItems.push({
+								element: item,
+								date: dateObj,
+								dateText: dateText
+							});
+						});
+					});
+
+					// Trier par date décroissante (plus récent en premier)
+					allItems.sort((a, b) => b.date - a.date);
+
+					// Trouver la première liste et vider toutes les autres
+					const firstGroup = pressGroups[0];
+					const firstList = firstGroup.querySelector('.press-list, .interview-list');
+
+					// Vider toutes les listes
+					pressGroups.forEach(group => {
+						const lists = group.querySelectorAll('.press-list, .interview-list');
+						lists.forEach(list => {
+							// Ne vider que si ce n'est pas la première liste
+							if (list !== firstList) {
+								while (list.firstChild) {
+									list.removeChild(list.firstChild);
+								}
+							}
+						});
+					});
+
+					// Vider la première liste aussi
+					while (firstList.firstChild) {
+						firstList.removeChild(firstList.firstChild);
+					}
+
+					// Ajouter tous les items triés dans la première liste
+					allItems.forEach(item => {
+						firstList.appendChild(item.element);
+					});
+				}
+
+				// Fonction pour restaurer l'ordre original
+				function restoreOriginalOrder() {
+					// Grouper les items par parent
+					const parentMap = new Map();
+
+					originalOrder.forEach((position, item) => {
+						if (!parentMap.has(position.parent)) {
+							parentMap.set(position.parent, []);
+						}
+						parentMap.get(position.parent).push({ item, index: position.index });
+					});
+
+					// Pour chaque parent, restaurer ses enfants dans l'ordre
+					parentMap.forEach((items, parent) => {
+						// Trier par index
+						items.sort((a, b) => a.index - b.index);
+
+						// Vider le parent
+						while (parent.firstChild) {
+							parent.removeChild(parent.firstChild);
+						}
+
+						// Ré-ajouter les items dans l'ordre
+						items.forEach(({ item }) => {
+							parent.appendChild(item);
+						});
+					});
 				}
 
 				// Helper function to count visible items with given filters
@@ -1499,6 +1758,9 @@ const title = "Negar Haeri - Avocate";
 					applyFilters();
 				});
 
+				// Trier par date au chargement initial (car par défaut on est sur "Tous")
+				sortByDate();
+
 			});
 
 			// Active navigation based on scroll position
@@ -1526,6 +1788,59 @@ const title = "Negar Haeri - Avocate";
 
 			window.addEventListener('scroll', updateActiveLink);
 			updateActiveLink(); // Initial call on page load
+		</script>
+
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+		<script>
+			// Initialize the map
+			document.addEventListener('DOMContentLoaded', () => {
+				// Coordinates for 48, rue Sainte-Anne, 75002 Paris
+				const lat = 48.8695;
+				const lng = 2.3360;
+
+				// Create map
+				const map = L.map('mapContainer').setView([lat, lng], 15);
+
+				// Add grayscale tile layer using Stamen Toner Lite (black and white tiles)
+				L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png', {
+					attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+					maxZoom: 20
+				}).addTo(map);
+
+				// Create custom icon with accent color
+				const customIcon = L.divIcon({
+					className: 'custom-marker',
+					html: `<div style="
+						background-color: #8b7355;
+						width: 30px;
+						height: 30px;
+						border-radius: 50% 50% 50% 0;
+						transform: rotate(-45deg);
+						border: 3px solid white;
+						box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+					">
+						<div style="
+							width: 10px;
+							height: 10px;
+							background-color: white;
+							border-radius: 50%;
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+						"></div>
+					</div>`,
+					iconSize: [30, 30],
+					iconAnchor: [15, 30]
+				});
+
+				// Add marker
+				L.marker([lat, lng], { icon: customIcon }).addTo(map)
+					.bindPopup('<b>Cabinet Negar Haeri</b><br>48, rue Sainte-Anne<br>75002 Paris', {
+						offset: [0, -33]
+					})
+					.openPopup();
+			});
 		</script>
 	</body>
 </html>
