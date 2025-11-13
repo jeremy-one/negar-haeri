@@ -1,44 +1,52 @@
 # Configuration du formulaire de contact
 
-Le formulaire de contact utilise Nodemailer pour envoyer des emails. Voici comment le configurer :
+Le formulaire de contact utilise Nodemailer pour envoyer des emails via le serveur SMTP Gandi.
 
 ## 1. Configuration locale (.env)
 
-Le fichier `.env` contient déjà la structure. Remplacez les valeurs par vos vraies credentials SMTP :
+Le fichier `.env` est déjà pré-configuré avec les paramètres Gandi. Il vous suffit de remplacer le mot de passe :
 
 ```env
-SMTP_HOST=smtp.gmail.com
+SMTP_HOST=mail.gandi.net
 SMTP_PORT=587
-SMTP_USER=votre-email@gmail.com
-SMTP_PASS=votre-mot-de-passe-application
+SMTP_USER=nh@haeri-avocat.com
+SMTP_PASS=VOTRE_MOT_DE_PASSE_ICI
 ```
 
-### Pour Gmail :
+Le mot de passe est celui qui a été défini lors de la création du compte email sur Gandi.
 
-1. Allez sur https://myaccount.google.com/apppasswords
-2. Créez un mot de passe d'application
-3. Utilisez ce mot de passe dans `SMTP_PASS`
+## 2. Configuration sur Vercel (IMPORTANT)
 
-### Pour OVH :
-```env
-SMTP_HOST=ssl0.ovh.net
-SMTP_PORT=587
-SMTP_USER=contact@votre-domaine.com
-SMTP_PASS=votre-mot-de-passe
+Pour que le formulaire fonctionne en production, vous **DEVEZ** configurer les variables d'environnement sur Vercel :
+
+### Étapes :
+
+1. Allez sur https://vercel.com/jeremy-ones-projects/negar-haeri
+2. Cliquez sur **Settings** (dans la navigation)
+3. Cliquez sur **Environment Variables** (menu de gauche)
+4. Ajoutez ces 4 variables **exactement comme ci-dessous** :
+
+| Variable | Valeur |
+|----------|--------|
+| `SMTP_HOST` | `mail.gandi.net` |
+| `SMTP_PORT` | `587` |
+| `SMTP_USER` | `nh@haeri-avocat.com` |
+| `SMTP_PASS` | Le mot de passe du compte email Gandi |
+
+5. Pour chaque variable, cliquez sur **Add** après l'avoir saisie
+6. Une fois les 4 variables ajoutées, allez dans l'onglet **Deployments**
+7. Cliquez sur les **3 points** du dernier déploiement
+8. Cliquez sur **Redeploy** pour appliquer les changements
+
+## 3. Paramètres Gandi (pour référence)
+
 ```
-
-## 2. Configuration sur Vercel
-
-Sur Vercel, vous devez configurer les variables d'environnement :
-
-1. Allez sur votre projet Vercel
-2. Settings > Environment Variables
-3. Ajoutez les 4 variables :
-   - `SMTP_HOST`
-   - `SMTP_PORT`
-   - `SMTP_USER`
-   - `SMTP_PASS`
-4. Redéployez le projet
+Serveur SMTP : mail.gandi.net
+Port : 587 (STARTTLS)
+TLS/SSL : Oui
+Nom d'utilisateur : nh@haeri-avocat.com
+Mot de passe : celui défini à la création
+```
 
 ## 3. Test
 
