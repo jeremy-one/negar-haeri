@@ -342,6 +342,13 @@ const title = "Négar Haeri - Avocate";
 						<div class="contact-form-wrapper">
 							<form class="contact-form" id="contactForm">
 								<div id="formMessage" class="form-message"></div>
+
+								<!-- Honeypot field - invisible pour les humains, visible pour les bots -->
+								<div class="honeypot-field" aria-hidden="true">
+									<label for="website">Laissez ce champ vide</label>
+									<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+								</div>
+
 								<div class="form-row">
 									<div class="form-group">
 										<label for="name">Nom *</label>
@@ -1273,6 +1280,16 @@ const title = "Négar Haeri - Avocate";
 				background-color: #f8d7da;
 				color: #721c24;
 				border: 1px solid #f5c6cb;
+			}
+
+			/* Honeypot - caché pour les humains */
+			.honeypot-field {
+				position: absolute;
+				left: -9999px;
+				width: 1px;
+				height: 1px;
+				opacity: 0;
+				pointer-events: none;
 			}
 
 			/* Map Section */

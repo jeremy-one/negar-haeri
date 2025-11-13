@@ -8,6 +8,17 @@ export const POST: APIRoute = async ({ request }) => {
     const email = data.get('email');
     const subject = data.get('subject');
     const message = data.get('message');
+    const honeypot = data.get('website'); // Honeypot field
+
+    // Protection Honeypot : si le champ est rempli, c'est un bot
+    if (honeypot) {
+      console.log('Bot détecté via honeypot');
+      // On retourne un succès pour ne pas alerter le bot
+      return new Response(
+        JSON.stringify({ success: true, message: 'Email envoyé avec succès' }),
+        { status: 200, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
 
     // Validation
     if (!name || !email || !subject || !message) {
