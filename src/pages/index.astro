@@ -1801,10 +1801,11 @@ const title = "Négar Haeri - Avocate";
 				// Create map
 				const map = L.map('mapContainer').setView([lat, lng], 15);
 
-				// Add grayscale tile layer using Stamen Toner Lite (black and white tiles)
-				L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png', {
-					attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-					maxZoom: 20
+				// Add grayscale tile layer using CartoDB Positron (clean, minimal black and white style)
+				L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+					maxZoom: 20,
+					subdomains: 'abcd'
 				}).addTo(map);
 
 				// Create custom icon with accent color
