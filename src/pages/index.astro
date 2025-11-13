@@ -340,7 +340,8 @@ const title = "Négar Haeri - Avocate";
 						</div>
 
 						<div class="contact-form-wrapper">
-							<form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+							<form class="contact-form" id="contactForm">
+								<div id="formMessage" class="form-message"></div>
 								<div class="form-row">
 									<div class="form-group">
 										<label for="name">Nom *</label>
@@ -359,7 +360,10 @@ const title = "Négar Haeri - Avocate";
 									<label for="message">Message *</label>
 									<textarea id="message" name="message" rows="6" required></textarea>
 								</div>
-								<button type="submit" class="submit-btn">Envoyer</button>
+								<button type="submit" class="submit-btn">
+									<span class="btn-text">Envoyer</span>
+									<span class="btn-loading" style="display: none;">Envoi en cours...</span>
+								</button>
 							</form>
 						</div>
 					</div>
@@ -1238,10 +1242,37 @@ const title = "Négar Haeri - Avocate";
 				margin-top: 1rem;
 			}
 
-			.submit-btn:hover {
+			.submit-btn:hover:not(:disabled) {
 				background-color: #7a6247;
 				transform: translateY(-2px);
 				box-shadow: 0 6px 16px rgba(139, 115, 85, 0.3);
+			}
+
+			.submit-btn:disabled {
+				opacity: 0.6;
+				cursor: not-allowed;
+			}
+
+			.form-message {
+				padding: 1rem;
+				border-radius: 8px;
+				margin-bottom: 1rem;
+				font-weight: 500;
+				display: none;
+			}
+
+			.form-message.success {
+				display: block;
+				background-color: #d4edda;
+				color: #155724;
+				border: 1px solid #c3e6cb;
+			}
+
+			.form-message.error {
+				display: block;
+				background-color: #f8d7da;
+				color: #721c24;
+				border: 1px solid #f5c6cb;
 			}
 
 			/* Map Section */
@@ -1910,6 +1941,60 @@ const title = "Négar Haeri - Avocate";
 
 				// Écouter le scroll uniquement (pas au chargement)
 				window.addEventListener('scroll', checkSections);
+			});
+		</script>
+
+		<script>
+			// Gestion du formulaire de contact
+			document.addEventListener('DOMContentLoaded', () => {
+				const form = document.getElementById('contactForm');
+				const formMessage = document.getElementById('formMessage');
+				const btnText = document.querySelector('.btn-text');
+				const btnLoading = document.querySelector('.btn-loading');
+				const submitBtn = document.querySelector('.submit-btn');
+
+				form.addEventListener('submit', async (e) => {
+					e.preventDefault();
+
+					// Afficher le loading
+					btnText.style.display = 'none';
+					btnLoading.style.display = 'inline';
+					submitBtn.disabled = true;
+					formMessage.textContent = '';
+					formMessage.className = 'form-message';
+
+					// Récupérer les données du formulaire
+					const formData = new FormData(form);
+
+					try {
+						const response = await fetch('/api/contact', {
+							method: 'POST',
+							body: formData,
+						});
+
+						const data = await response.json();
+
+						if (response.ok) {
+							// Succès
+							formMessage.textContent = 'Votre message a été envoyé avec succès !';
+							formMessage.className = 'form-message success';
+							form.reset();
+						} else {
+							// Erreur
+							formMessage.textContent = data.error || 'Une erreur est survenue lors de l\'envoi du message.';
+							formMessage.className = 'form-message error';
+						}
+					} catch (error) {
+						console.error('Erreur:', error);
+						formMessage.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+						formMessage.className = 'form-message error';
+					} finally {
+						// Remettre le bouton en état normal
+						btnText.style.display = 'inline';
+						btnLoading.style.display = 'none';
+						submitBtn.disabled = false;
+					}
+				});
 			});
 		</script>
 	</body>
