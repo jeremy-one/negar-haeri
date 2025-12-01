@@ -385,7 +385,19 @@ const title = "Négar Haeri - Avocate";
 
 		<div class="container">
 			<footer>
-				<p>&copy; 2025 Negar Haeri</p>
+				<div class="footer__content">
+					<p>&copy; 2025 Negar Haeri</p>
+					<a href="https://bl-nk.fr/" target="_blank" rel="dofollow" title="BL-NK Conception - Agence web" class="footer__blnk">
+						<img
+							src="/images/BL NK CONCEPTION WHITE.svg"
+							alt="BL-NK Conception"
+							class="blnk-logo"
+							width="100"
+							height="31"
+							loading="lazy"
+						/>
+					</a>
+				</div>
 			</footer>
 		</div>
 
@@ -1315,12 +1327,33 @@ const title = "Négar Haeri - Avocate";
 
 
 			footer {
-				text-align: center;
 				padding: 3rem 0;
 				border-top: 1px solid #e0e0e0;
 				margin-top: 0;
 				color: var(--color-secondary);
 				font-size: 0.9rem;
+			}
+
+			.footer__content {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+			}
+
+			.footer__blnk {
+				position: absolute;
+				right: 0;
+			}
+
+			.blnk-logo {
+				filter: invert(1);
+				opacity: 0.6;
+				transition: opacity 0.3s ease;
+			}
+
+			.blnk-logo:hover {
+				opacity: 1;
 			}
 
 			/* Responsive Design */
