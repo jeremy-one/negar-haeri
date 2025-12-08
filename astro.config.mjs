@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://negar-haeri.vercel.app',
+  site: 'https://www.haeri-avocat.com',
   output: 'server',
   adapter: vercel(),
   integrations: [sitemap()],
