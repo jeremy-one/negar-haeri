@@ -1271,19 +1271,22 @@ const description = "La page que vous recherchez n existe pas ou a ete deplacee.
 
 			.btn-back {
 				display: inline-block;
-				padding: 1rem 2.5rem;
 				background-color: var(--color-accent);
 				color: var(--color-white);
-				text-decoration: none;
-				font-size: 0.95rem;
+				padding: 1rem 2.5rem;
+				border: none;
+				border-radius: 8px;
+				font-size: 1rem;
 				font-weight: 500;
-				letter-spacing: 0.05em;
-				transition: background-color 0.3s ease, transform 0.3s ease;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				text-decoration: none;
 			}
 
 			.btn-back:hover {
-				background-color: #7a6548;
+				background-color: #7a6247;
 				transform: translateY(-2px);
+				box-shadow: 0 6px 16px rgba(139, 115, 85, 0.3);
 			}
 
 			@media (max-width: 768px) {
