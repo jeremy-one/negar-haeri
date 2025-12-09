@@ -2094,12 +2094,22 @@ const ogImage = `${siteUrl}/negar-haeri.jpg`;
 					iconAnchor: [15, 30]
 				});
 
-				// Add marker
-				L.marker([lat, lng], { icon: customIcon }).addTo(map)
+				// Add marker with accessibility
+				const marker = L.marker([lat, lng], {
+					icon: customIcon,
+					alt: 'Cabinet Negar Haeri - 48 rue Sainte-Anne, 75002 Paris',
+					title: 'Cabinet Negar Haeri'
+				}).addTo(map)
 					.bindPopup('<b>Cabinet Negar Haeri</b><br>48, rue Sainte-Anne<br>75002 Paris', {
 						offset: [0, -33]
 					})
 					.openPopup();
+
+				// Ajouter aria-label pour l'accessibilite du marqueur
+				const markerElement = marker.getElement();
+				if (markerElement) {
+					markerElement.setAttribute('aria-label', 'Localisation du Cabinet Negar Haeri - 48 rue Sainte-Anne, 75002 Paris');
+				}
 			});
 		</script>
 

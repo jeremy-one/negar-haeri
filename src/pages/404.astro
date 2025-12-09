@@ -1,0 +1,244 @@
+---
+const title = "Page non trouvée - Négar Haeri";
+const description = "La page que vous recherchez n'existe pas ou a été déplacée.";
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="robots" content="noindex, nofollow" />
+		<meta name="description" content={description} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<div class="header-content">
+				<div class="header-title">
+					<a href="/" class="header-link">
+						<h1><span class="initials"><span class="letter-n">N</span><span class="letter-h">H</span></span> | Negar Haeri</h1>
+						<p class="subtitle">Avocate en droit pénal</p>
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<div class="container">
+			<main class="error-page">
+				<div class="error-content">
+					<h2 class="error-code">404</h2>
+					<h3 class="error-title">Page non trouvée</h3>
+					<p class="error-message">La page que vous recherchez n'existe pas ou a été déplacée.</p>
+					<a href="/" class="btn-back">Retour à l'accueil</a>
+				</div>
+			</main>
+		</div>
+
+		<div class="container">
+			<footer>
+				<div class="footer__content">
+					<p>&copy; 2025 Negar Haeri</p>
+					<a href="https://bl-nk.fr/" target="_blank" rel="dofollow" title="BL-NK Conception - Agence web" class="footer__blnk">
+						<img
+							src="/images/BL NK CONCEPTION WHITE.svg"
+							alt="BL-NK Conception"
+							class="blnk-logo"
+							width="100"
+							height="31"
+							loading="lazy"
+						/>
+					</a>
+				</div>
+			</footer>
+		</div>
+
+		<style>
+			:root {
+				--color-primary: #0f1f35;
+				--color-secondary: #0f1f35;
+				--color-accent: #8b7355;
+				--color-bg: #fafafa;
+				--color-white: #ffffff;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Open Sans', sans-serif;
+				background-color: var(--color-bg);
+				color: var(--color-secondary);
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+				width: 100%;
+			}
+
+			/* Header */
+			header {
+				padding: 1.5rem 2rem;
+				background-color: var(--color-primary);
+				color: var(--color-white);
+			}
+
+			.header-content {
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+
+			.header-link {
+				text-decoration: none;
+				color: inherit;
+			}
+
+			.header-title h1 {
+				font-family: 'Playfair Display', serif;
+				font-size: 1.5rem;
+				font-weight: 400;
+				letter-spacing: 0.05em;
+			}
+
+			.initials {
+				font-weight: 600;
+			}
+
+			.letter-n, .letter-h {
+				display: inline-block;
+			}
+
+			.subtitle {
+				font-size: 0.85rem;
+				font-weight: 300;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				margin-top: 0.25rem;
+				opacity: 0.8;
+			}
+
+			/* Error Page */
+			.error-page {
+				flex: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 6rem 0;
+			}
+
+			.error-content {
+				text-align: center;
+			}
+
+			.error-code {
+				font-family: 'Playfair Display', serif;
+				font-size: 8rem;
+				font-weight: 400;
+				color: var(--color-accent);
+				line-height: 1;
+				margin-bottom: 1rem;
+			}
+
+			.error-title {
+				font-family: 'Playfair Display', serif;
+				font-size: 2rem;
+				font-weight: 400;
+				margin-bottom: 1rem;
+				color: var(--color-primary);
+			}
+
+			.error-message {
+				font-size: 1.1rem;
+				color: #666;
+				margin-bottom: 2.5rem;
+				max-width: 400px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			.btn-back {
+				display: inline-block;
+				padding: 1rem 2.5rem;
+				background-color: var(--color-accent);
+				color: var(--color-white);
+				text-decoration: none;
+				font-size: 0.95rem;
+				font-weight: 500;
+				letter-spacing: 0.05em;
+				transition: background-color 0.3s ease, transform 0.3s ease;
+			}
+
+			.btn-back:hover {
+				background-color: #7a6548;
+				transform: translateY(-2px);
+			}
+
+			/* Footer */
+			footer {
+				padding: 3rem 0;
+				border-top: 1px solid #e0e0e0;
+				color: var(--color-secondary);
+				font-size: 0.9rem;
+			}
+
+			.footer__content {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+			}
+
+			.footer__blnk {
+				position: absolute;
+				right: 0;
+			}
+
+			.blnk-logo {
+				filter: invert(1);
+				opacity: 0.6;
+				transition: opacity 0.3s ease;
+			}
+
+			.blnk-logo:hover {
+				opacity: 1;
+			}
+
+			/* Responsive */
+			@media (max-width: 768px) {
+				.error-code {
+					font-size: 5rem;
+				}
+
+				.error-title {
+					font-size: 1.5rem;
+				}
+
+				.error-message {
+					font-size: 1rem;
+					padding: 0 1rem;
+				}
+
+				.footer__blnk {
+					position: static;
+					margin-top: 1rem;
+				}
+
+				.footer__content {
+					flex-direction: column;
+				}
+			}
+		</style>
+	</body>
+</html>
