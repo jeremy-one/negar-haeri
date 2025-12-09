@@ -1,6 +1,6 @@
 ---
-const title = "Négar Haeri - Avocate";
-const description = "Négar Haeri, avocate en droit pénal, auteure de 'La jeune fille et la mort'";
+const title = "Négar Haeri - Avocate en droit pénal Paris";
+const description = "Avocate pénaliste au Barreau de Paris, Négar Haeri défend victimes et accusés. Ancienne Secrétaire de la Conférence. Auteure de « La jeune fille et la mort »."
 const siteUrl = "https://www.haeri-avocat.com";
 const ogImage = `${siteUrl}/negar-haeri.jpg`;
 ---
@@ -27,6 +27,33 @@ const ogImage = `${siteUrl}/negar-haeri.jpg`;
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImage} />
+		<!-- Schema.org JSON-LD -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Attorney",
+			"name": "Négar Haeri",
+			"jobTitle": "Avocate en droit pénal",
+			"description": "Avocate pénaliste au Barreau de Paris, défense des victimes et des personnes mises en cause. Ancienne Secrétaire de la Conférence du stage.",
+			"url": "https://www.haeri-avocat.com",
+			"image": "https://www.haeri-avocat.com/negar-haeri.jpg",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Paris",
+				"addressCountry": "FR"
+			},
+			"sameAs": [
+				"https://www.instagram.com/negar_haeri/",
+				"https://www.linkedin.com/in/negar-haeri-7784a7313/",
+				"https://www.facebook.com/negar.haeri.7"
+			],
+			"knowsAbout": ["Droit pénal", "Défense pénale", "Parties civiles", "Droit des victimes"],
+			"alumniOf": {
+				"@type": "EducationalOrganization",
+				"name": "Barreau de Paris"
+			}
+		}
+		</script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet" />
@@ -90,7 +117,7 @@ const ogImage = `${siteUrl}/negar-haeri.jpg`;
 				<section id="biographie" class="hero-section">
 					<div class="hero-content">
 						<div class="photo-container">
-							<img src="/negar-haeri.jpg" alt="Negar Haeri" class="profile-photo" />
+							<img src="/negar-haeri.webp" alt="Negar Haeri" class="profile-photo" />
 							<div class="social-links">
 								<a href="https://www.instagram.com/negar_haeri/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -430,6 +457,10 @@ const ogImage = `${siteUrl}/negar-haeri.jpg`;
 									<label for="website">Laissez ce champ vide</label>
 									<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
 								</div>
+
+								<!-- Timestamp anti-bot -->
+								<input type="hidden" id="_timestamp" name="_timestamp" value="" />
+
 
 								<div class="form-row">
 									<div class="form-group">
@@ -2113,6 +2144,12 @@ const ogImage = `${siteUrl}/negar-haeri.jpg`;
 				const btnText = document.querySelector('.btn-text');
 				const btnLoading = document.querySelector('.btn-loading');
 				const submitBtn = document.querySelector('.submit-btn');
+
+				// Initialiser le timestamp anti-bot
+				const timestampField = document.getElementById('_timestamp');
+				if (timestampField) {
+					timestampField.value = Date.now().toString();
+				}
 
 				form.addEventListener('submit', async (e) => {
 					e.preventDefault();
