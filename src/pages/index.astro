@@ -77,8 +77,10 @@ const ogImage = `${siteUrl}/negar-haeri.jpg`;
 		<header>
 			<div class="header-content">
 				<div class="header-title">
-					<h1><span class="initials"><span class="letter-n">N</span><span class="letter-h">H</span></span> | Negar Haeri</h1>
-					<p class="subtitle">Avocate en droit pénal</p>
+					<a href="/" class="header-home-link">
+						<h1><span class="initials"><span class="letter-n">N</span><span class="letter-h">H</span></span> | Negar Haeri</h1>
+						<p class="subtitle">Avocate en droit pénal</p>
+					</a>
 				</div>
 				<nav class="main-nav">
 					<a href="#biographie" class="nav-link">Biographie</a>
@@ -638,6 +640,12 @@ const ogImage = `${siteUrl}/negar-haeri.jpg`;
 
 			.header-title {
 				text-align: center;
+			}
+
+
+			.header-home-link {
+				text-decoration: none;
+				color: inherit;
 			}
 
 			.main-nav {
