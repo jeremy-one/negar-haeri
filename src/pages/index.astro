@@ -31,12 +31,27 @@ const ogImage = `${siteUrl}/negar-haeri.jpg`;
 		<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
-			"@type": "Attorney",
+			"@type": "Person",
+			"@id": "https://www.haeri-avocat.com/#negar-haeri",
 			"name": "Négar Haeri",
-			"jobTitle": "Avocate en droit pénal",
-			"description": "Avocate pénaliste au Barreau de Paris, défense des victimes et des personnes mises en cause. Ancienne Secrétaire de la Conférence du stage.",
-			"url": "https://www.haeri-avocat.com",
+			"url": "https://www.haeri-avocat.com/",
 			"image": "https://www.haeri-avocat.com/negar-haeri.jpg",
+			"jobTitle": "Avocate pénaliste",
+			"description": "Avocate en droit pénal au Barreau de Paris, intervenant dans la défense des victimes et des personnes mises en cause.",
+			"hasOccupation": {
+				"@type": "Occupation",
+				"name": "Attorney"
+			},
+			"affiliation": {
+				"@type": "Organization",
+				"name": "Barreau de Paris"
+			},
+			"knowsAbout": [
+				"Droit pénal",
+				"Procès criminels",
+				"Défense pénale",
+				"Parties civiles"
+			],
 			"address": {
 				"@type": "PostalAddress",
 				"addressLocality": "Paris",
@@ -46,12 +61,7 @@ const ogImage = `${siteUrl}/negar-haeri.jpg`;
 				"https://www.instagram.com/negar_haeri/",
 				"https://www.linkedin.com/in/negar-haeri-7784a7313/",
 				"https://www.facebook.com/negar.haeri.7"
-			],
-			"knowsAbout": ["Droit pénal", "Défense pénale", "Parties civiles", "Droit des victimes"],
-			"alumniOf": {
-				"@type": "EducationalOrganization",
-				"name": "Barreau de Paris"
-			}
+			]
 		}
 		</script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
