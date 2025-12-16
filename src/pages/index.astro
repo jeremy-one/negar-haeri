@@ -188,6 +188,13 @@ const ogImage = `${siteUrl}/negar-haeri.jpg`;
 					<div class="press-group" data-type="articles">
 						<h3>Articles de presse</h3>
 						<ul class="press-list">
+							<li data-tags="shaina 13nov">
+								<a href="/2025-12-11-L'HUMANITE MAGAZINE-Du 11 au 17 decembre 2025-10000000070413774.pdf" target="_blank" rel="noopener noreferrer">
+									<span class="source" data-media="humanite">L'Humanité Magazine</span>
+									« Shaïna a appelé la justice à l'aide... en vain » - Portrait
+									<span class="date">11 décembre 2025</span>
+								</a>
+							</li>
 							<li data-tags="shaina">
 								<a href="https://www.elle.lu/fr/8906-violences-faites-aux-femmes-ce-que-laffaire-shaina-revele-selon-lavocate-negar-haeri.html" target="_blank" rel="noopener noreferrer">
 									<span class="source" data-media="elle">Elle Luxembourg</span>
@@ -1087,6 +1094,10 @@ const ogImage = `${siteUrl}/negar-haeri.jpg`;
 
 			.source[data-media="instagram"]::before {
 				background-image: url('https://www.instagram.com/favicon.ico');
+			}
+
+			.source[data-media="humanite"]::before {
+				background-image: url('/logos/humanite.ico');
 			}
 
 			.title {
